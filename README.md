@@ -27,7 +27,7 @@ A College Management System built using Python and MySQL.
 - Admins
 
 ## Project Structure
-
+```text
 ├── main.py
 ├── db.py
 ├── student_manager.py
