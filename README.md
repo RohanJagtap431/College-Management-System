@@ -36,6 +36,7 @@ A College Management System built using Python and MySQL.
 ├── payment_manager.py
 ├── reports_manager.py
 └── schema.sql
+```
 
 ## Installation
 
