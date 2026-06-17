@@ -4,6 +4,7 @@ from course_manager import CourseManager
 from enrollment import EnrollmentManager
 from payment_manager import PaymentManager
 from reports_manager import ReportsManager
+from faculty_manager import FacultyManager
 def main():
     db = DBhelper()
     student_manager = StudentManager(db)
@@ -11,15 +12,17 @@ def main():
     enrollment_manager = EnrollmentManager(db)
     payment_manager = PaymentManager(db)
     reports_manager = ReportsManager(db)
+    faculty_manager = FacultyManager(db)
     
     while True:
-        print("\n********* COLLEGE MANAGEMANT *********")
-        print("1.Student Management")
-        print("2.Course Management")
-        print("3.Enrollment Management")
-        print("4.Payment Management")
-        print("5.Reports")
-        print("6.Exit")
+        print("========== COLLEGE MANAGEMENT ==========")
+        print("1. Student Management")
+        print("2. Course Management")
+        print("3. Faculty Manager")
+        print("4. Enrollment Management")
+        print("5. Payment Management")
+        print("6. Reports")
+        print("7. Exit")
         
         try:
             choice = int(input("Enter Your Choice: "))
@@ -93,6 +96,34 @@ def main():
                 
             elif choice == 3:
                 while True:
+                    print("========== Faculty Management ==========")
+                    print("1. Add Faculty")
+                    print("2. View Facultys")
+                    print("3. Search Faculty")
+                    print("4. Delete Faculty")
+                    print("5. Update Faculty")
+                    print("6. Exit")
+                    print()
+                    faculty_choice = int(input("Enter Your Choice: "))
+                    
+                    if faculty_choice == 1:
+                        faculty_manager.add_faculty()
+                    elif faculty_choice == 2:
+                        faculty_manager.view_faculty()
+                    elif faculty_choice == 3:
+                        faculty_manager.search_faculty()
+                    elif faculty_choice == 4:
+                        faculty_manager.delete_faculty()
+                    elif faculty_choice == 5:
+                        faculty_manager.update_faculty()
+                    elif faculty_choice == 6:
+                        print()
+                        break
+                    else:
+                        print("Invalid Input")
+            
+            elif choice == 4:
+                while True:
                     print("\n********** ENROLLMENT MANAGEMENT **********")
                     print("1. Enroll Student")
                     print("2. View Enrollments")
@@ -125,7 +156,7 @@ def main():
                     else:
                         print("Invalid Choice")
                 
-            elif choice == 4:
+            elif choice == 5:
                 while True:
                     print("\n********** PAYMENT MANAGEMENT **********")
                     print("1. Add Payment")
@@ -159,17 +190,18 @@ def main():
                     else:
                         print("Invalid Choice")
                   
-            elif choice == 5:
+            elif choice == 6:
                 while True:
                     print("\n********** REPORTS MANAGEMENT **********")
                     print("1. Total Students")
                     print("2. Total Courses")
-                    print("3. Total Enrollments")
-                    print("4. Total Payments")
-                    print("5. Paid Amount")
-                    print("6. Pending Amount")
-                    print("7. Failed Amount")
-                    print("8. Back")
+                    print("3. Total Facultys")
+                    print("4. Total Enrollments")
+                    print("5. Total Payments")
+                    print("6. Paid Amount")
+                    print("7. Pending Amount")
+                    print("8. Failed Amount")
+                    print("9. Back")
                     print()
                     
                     report_choice = int(input("Enter Your Choice: "))
@@ -181,27 +213,30 @@ def main():
                         reports_manager.total_courses()
                         
                     elif report_choice == 3:
+                        reports_manager.total_facultys()
+                        
+                    elif report_choice == 4:
                         reports_manager.total_enrollments()
                     
-                    elif report_choice == 4:
+                    elif report_choice == 5:
                         reports_manager.total_payments()
                         
-                    elif report_choice == 5:
+                    elif report_choice == 6:
                         reports_manager.paid_payment_total()
                         
-                    elif report_choice == 6:
+                    elif report_choice == 7:
                         reports_manager.pending_payments_total()
                         
-                    elif report_choice == 7:
+                    elif report_choice == 8:
                         reports_manager.failed_payments_total()
                         
-                    elif report_choice == 8:
+                    elif report_choice == 9:
                         print()
                         break
                     else:
                         print("Invalid Choice")
                 
-            elif choice == 6:
+            elif choice == 7:
                 print("Thank You")
                 break
             

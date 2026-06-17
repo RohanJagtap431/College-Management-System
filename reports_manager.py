@@ -16,6 +16,13 @@ class ReportsManager:
         
         print(f"Total Courses: {result[0]}")
         
+    def total_facultys(self):
+        query = "SELECT COUNT(*) FROM Faculty"
+        self.db.cur.execute(query)
+        result = self.db.cur.fetchone()
+        
+        print(f"Total Facultys: {result[0]}")
+        
     def total_enrollments(self):
         query = "SELECT COUNT(*) FROM Enrollments"
         self.db.cur.execute(query)
